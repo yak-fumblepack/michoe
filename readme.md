@@ -3,6 +3,5 @@
 discord bot for server
 
 
-modular? yes
-
+modular? yes\
 can play music? no
