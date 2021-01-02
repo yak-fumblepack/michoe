@@ -14,6 +14,7 @@ bot.remove_command("help")
 
 cogs = [
     'cogs.info',
+    'cogs.code',
     ]
 
 for cog in cogs:
@@ -41,8 +42,10 @@ async def loadcog(ctx, cogname=None):
         bot.load_extension(cogname)
     except Exception as e:
         print(f'Could not load cog {cogname}: {str(e)}')
+        await ctx.send(f'Could not load cog {cogname}: {str(e)}')
     else: 
         print(f'Loaded cog: {cogname} sucessfully')
+        await ctx.send(f'Loaded cog: {cogname} sucessfully')
 
 @bot.command()
 @commands.is_owner()
@@ -53,8 +56,10 @@ async def unloadcog(ctx, cogname=None):
         bot.unload_extension(cogname)
     except Exception as e:
         print(f'Could not unload cog {cogname}: {str(e)}')
+        await ctx.send(f'Could not unload cog {cogname}: {str(e)}')
     else: 
         print(f'Unloaded cog: {cogname} sucessfully')
+        await ctx.send(f'Unloaded cog: {cogname} sucessfully')
 
 
 
