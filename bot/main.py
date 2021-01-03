@@ -5,6 +5,15 @@ import requests
 from discord.ext import commands
 from dotenv import load_dotenv
 
+import asyncio
+import io
+import os
+import random
+import urllib.parse
+import urllib.request
+
+from PIL import Image
+
 # basic settings
 load_dotenv()
 token = os.getenv("token")
@@ -15,6 +24,7 @@ bot.remove_command("help")
 cogs = [
     'cogs.info',
     'cogs.code',
+    'cogs.math',
     ]
 
 for cog in cogs:
@@ -60,9 +70,5 @@ async def unloadcog(ctx, cogname=None):
     else: 
         print(f'Unloaded cog: {cogname} sucessfully')
         await ctx.send(f'Unloaded cog: {cogname} sucessfully')
-
-
-
-
 
 bot.run(token)

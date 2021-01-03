@@ -30,7 +30,7 @@ class Code(commands.Cog):
                 'LanguageChoice': lang,
                 'Program': args,
                 'Input': "",
-                'CompilerArgs': "-o a.out source_file.cpp"
+                'CompilerArgs': "",
             })
 
             # supplying values
@@ -60,7 +60,7 @@ class Code(commands.Cog):
             except:
                 await ctx.send("Sorry there was an error processing this command")
         else:
-            await ctx.send("Please provide the correct input: run ;;codeinfo to see more")
+            await ctx.send("Please provide the correct input: ;;run <lang#> <> ;;codeinfo to see more")
 
 def setup(bot):
     bot.add_cog(Code(bot))
