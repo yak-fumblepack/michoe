@@ -25,6 +25,7 @@ cogs = [
     'cogs.info',
     'cogs.code',
     'cogs.math',
+    'cogs.chatresponse',
     ]
 
 for cog in cogs:
