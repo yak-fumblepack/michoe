@@ -1,7 +1,10 @@
 ## Michoe
 
 discord bot for server
-
+pull request if you want to add something 
 
 modular? yes\
-can play music? no
+run code? yes\
+do calculus? no\
+render latex? no\
+play music? no\
