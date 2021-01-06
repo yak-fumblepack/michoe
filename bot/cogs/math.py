@@ -8,7 +8,7 @@ class Math(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('Math runner cog has been loaded sucessfully')
+        print('Math cog has been loaded sucessfully')
 
     @commands.command(aliases=["+"])
     async def add(self, ctx, num1, num2):
