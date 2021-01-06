@@ -1,6 +1,6 @@
 ## Michoe
 
-discord bot for server
+discord bot for server \
 pull request if you want to add something 
 
 modular? yes\
