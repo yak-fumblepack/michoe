@@ -25,7 +25,6 @@ cogs = [
     'cogs.info',
     'cogs.code',
     'cogs.math',
-    'cogs.chatresponse',
     ]
 
 for cog in cogs:
@@ -33,9 +32,6 @@ for cog in cogs:
         bot.load_extension(cog)
     except Exception as e:
         print(f'Could not load cog {cog}: {str(e)}')
-
-
-
 
 # main 
 
@@ -71,5 +67,10 @@ async def unloadcog(ctx, cogname=None):
     else: 
         print(f'Unloaded cog: {cogname} sucessfully')
         await ctx.send(f'Unloaded cog: {cogname} sucessfully')
+
+@bot.command()
+@commands.is_owner()
+async def kill(ctx):
+    await bot.logout()
 
 bot.run(token)
