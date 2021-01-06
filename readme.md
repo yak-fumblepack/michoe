@@ -7,4 +7,4 @@ modular? yes\
 run code? yes\
 do calculus? no\
 render latex? no\
-play music? no\
+play music? no
