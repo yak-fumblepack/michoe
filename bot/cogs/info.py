@@ -20,7 +20,7 @@ class Info(commands.Cog):
         guildicon = server.icon_url
 
 
-        emb = discord.Embed(title=str(server), color=0x9966cc)
+        emb = discord.Embed(title=str(server), color=0x6b0080)
         emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
         emb.set_thumbnail(url=guildicon)
         emb.add_field(name="Server: ", value=server.name)
@@ -50,6 +50,13 @@ class Info(commands.Cog):
         except:
             await ctx.send("Sorry there was an error processing this command")
 
+    @commands.command(aliases=["fshithelp", "shithelp"])
+    async def funshithelp(self, ctx):
+        author = ctx.message.author
+
+        emb = discord.Embed(title="Fun shit help", color=0x6b0080)
+        emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        emb.add_field(name="gayness", value=";;howgay <username or name>")
 
 def setup(bot):
     bot.add_cog(Info(bot))
