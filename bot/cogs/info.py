@@ -51,6 +51,21 @@ class Info(commands.Cog):
         except:
             await ctx.send("Sorry there was an error processing this command")
     
+
+    # utility commands
+    @commands.command(aliases=["utilhelp"])
+    async def utilityhelp(self, ctx):
+        author = ctx.message.author
+
+        emb = discord.Embed(title="Utility", color=0x6b0080)
+        emb.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        emb.add_field(name=";;clear", value=";;purgemsg <amount of messages> **(manage messages, or bot owner only)**", inline=False)
+
+        try:
+            await ctx.send(author, embed=emb)
+        except:
+            await ctx.send("Sorry there was an error processing this command")
+
     # singular help command to display the specific cog help commands
     @commands.command(aliases=["help"])
     async def helpcmd(self, ctx):
@@ -67,6 +82,7 @@ class Info(commands.Cog):
         emb.add_field(name="cogs.Math help", value=";;mathhelp or mhelp", inline=False)
         emb.add_field(name="cogs.Code help", value=";;codeinfo or ;;cinfo", inline=False)
         emb.add_field(name="cogs.Admin help", value=";;adminhelp or ;;adhelp", inline=False)
+        emb.add_field(name="cogs.utils.Utils help", value=";;utilityhelp or ;;utilhelp", inline=False)
 
         try:
             await ctx.send(author, embed=emb)
