@@ -23,6 +23,26 @@ def percentIsGay(args):
 
     return (args + " is " + str((gayness/len(args))*100) + "% gay")
 
+# gayness check without sentence
+def otherpercentIsGay(args):
+    gayletters = ["g","a","y","m","i","c","h","a","e","l","p","n","s","G","A","Y","M","I","C","H","A","E","L","P","N","S"]
+    barelygayletters = ["x","u","r","w","z","j","k"]
+    gayness = 0
+
+    wordlen = 0
+    while wordlen < len(args):
+        if args[wordlen] in gayletters:
+            gayness += 1
+        wordlen += 1
+
+    wordlen = 0
+    while wordlen < len(args):
+        if args[wordlen] in barelygayletters:
+            gayness += 0.4
+        wordlen += 1
+
+    return int(gayness/len(args)*100)
+
 # generates nitro code
 def nitro():
     code = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
@@ -45,6 +65,18 @@ class Funshit(commands.Cog):
             isgay = percentIsGay(args)
             await ctx.send(isgay)
     
+    @commands.command()
+    async def wouldtheyfuck(self, ctx, p1, p2):
+        gayperson1 = otherpercentIsGay(str(p1))
+        gayperson2 = otherpercentIsGay(str(p2))
+        wouldthey = (gayperson1+gayperson2)/2
+        if (wouldthey > 70):
+            await ctx.send("they will fucking peg each other to death")
+        elif (50 <= wouldthey <=70):
+            await ctx.send("they will fuck")
+        elif (wouldthey < 49):
+            await ctx.send("homie can't even get his dick hard :(")
+
     @commands.command()
     async def nitropls(self, ctx):
         await ctx.send(nitro())

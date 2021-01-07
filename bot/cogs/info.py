@@ -51,6 +51,21 @@ class Info(commands.Cog):
         except:
             await ctx.send("Sorry there was an error processing this command")
     
+    # music commands
+    @commands.command(aliases=["mhelp"])
+    async def musichelp(self, ctx):
+        author = ctx.message.author
+
+        emb = discord.Embed(title="Music", color=0x6b0080)
+        emb.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        emb.add_field(name=";;joinvc", value=";;jvc, ;;join or ;;vc", inline=False)
+        emb.add_field(name=";;play", value=";;play <youtube url> or ;;p <youtube url>", inline=False)
+
+        try:
+            await ctx.send(author, embed=emb)
+        except:
+            await ctx.send("Sorry there was an error processing this command")
+
 
     # utility commands
     @commands.command(aliases=["utilhelp"])
@@ -112,6 +127,7 @@ class Info(commands.Cog):
         emb = discord.Embed(title="Fun shit help", color=0x6b0080)
         emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
         emb.add_field(name=";;howgay", value=";;howgay <username or name>")
+        emb.add_field(name=";;wouldtheyfuck", value=";;wouldtheyfuck <person 1> <person 2>")
         emb.add_field(name=";;nitropls", value="generates random nitro url (probably won't work)")
 
         try:

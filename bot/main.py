@@ -24,6 +24,8 @@ cogs = [
     'cogs.math',
     'cogs.funshit',
     'cogs.utils.utils',
+    'cogs.utils.admin',
+    'cogs.music.music',
     ]
 
 for cog in cogs:
