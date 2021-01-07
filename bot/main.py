@@ -11,8 +11,6 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from PIL import Image
 
-from bot.cogs.funshit import nitro
-
 # basic settings
 load_dotenv()
 token = os.getenv("token")
@@ -25,6 +23,7 @@ cogs = [
     'cogs.code',
     'cogs.math',
     'cogs.funshit',
+    'cogs.utils.utils',
     ]
 
 for cog in cogs:
@@ -67,7 +66,7 @@ async def unloadcog(ctx, cogname=None):
     else: 
         print(f'Unloaded cog: {cogname} sucessfully')
         await ctx.send(f'Unloaded cog: {cogname} sucessfully')
-        
+
 @bot.command()
 @commands.is_owner()
 async def kill(ctx):
