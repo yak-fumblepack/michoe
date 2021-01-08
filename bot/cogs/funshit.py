@@ -105,7 +105,7 @@ class Funshit(commands.Cog):
     async def classicnitropls(self, ctx):
         await ctx.send(classicNitro())
 
-    @commands.command(aliases=["bnitropls"])
+    @commands.command(aliases=["bnitropls", "nitropls", "nitro"])
     async def boostnitropls(self, ctx):
         await ctx.send(boostNitro())
 
