@@ -1,6 +1,7 @@
 import string
 import random
 import discord
+import requests
 from discord.ext import commands
 
 # gayness check
@@ -47,14 +48,31 @@ def otherpercentIsGay(args):
 def classicNitro():
     code = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
     classic_nitro_url = "https://discord.gift/" + code
-    return(classic_nitro_url)
+
+    api_url = "https://discordapp.com/api/v6/entitlements/gift-codes/" + code + "?with_application=false&with_subscription_plan=true"
+    
+    api_status = requests.get(api_url)
+    if api_status.status_code ==  200:
+        validity = "valid code"
+        return(classic_nitro_url+"\n"+validity)
+    else:
+        validity = "not valid"
+        return(classic_nitro_url+"\n"+validity)
 
 # generates nitro code
 def boostNitro():
     code = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(24))
     boost_nitro_url = "https://discord.gift/" + code
-    return(boost_nitro_url)
 
+    api_url = "https://discordapp.com/api/v6/entitlements/gift-codes/" + code + "?with_application=false&with_subscription_plan=true"
+
+    api_status = requests.get(api_url)
+    if api_status.status_code ==  200:
+        validity = "valid code"
+        return(boost_nitro_url+"\n"+validity)
+    else:
+        validity = "not valid"
+        return(boost_nitro_url+"\n"+validity)
 # main
 class Funshit(commands.Cog):
 
