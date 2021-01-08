@@ -44,10 +44,16 @@ def otherpercentIsGay(args):
     return int(gayness/len(args)*100)
 
 # generates nitro code
-def nitro():
+def classicNitro():
     code = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
-    nitro_url = "https://discord.gift/" + code
-    return(nitro_url)
+    classic_nitro_url = "https://discord.gift/" + code
+    return(classic_nitro_url)
+
+# generates nitro code
+def boostNitro():
+    code = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(24))
+    boost_nitro_url = "https://discord.gift/" + code
+    return(boost_nitro_url)
 
 # main
 class Funshit(commands.Cog):
@@ -77,9 +83,13 @@ class Funshit(commands.Cog):
         elif (wouldthey < 49):
             await ctx.send("homie can't even get his dick hard :(")
 
-    @commands.command()
-    async def nitropls(self, ctx):
-        await ctx.send(nitro())
+    @commands.command(aliases=["cnitropls"])
+    async def classicnitropls(self, ctx):
+        await ctx.send(classicNitro())
+
+    @commands.command(aliases=["bnitropls"])
+    async def boostnitropls(self, ctx):
+        await ctx.send(boostNitro())
 
 def setup(bot):
     bot.add_cog(Funshit(bot))
