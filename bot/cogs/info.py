@@ -127,6 +127,7 @@ class Info(commands.Cog):
         emb = discord.Embed(title="Fun shit help", color=0x6b0080)
         emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
         emb.add_field(name=";;howgay", value=";;howgay <username or name>")
+        emb.add_field(name=";;kkk", value=";;kkk <person> makes them racist, also don't be a racist")
         emb.add_field(name=";;wouldtheyfuck", value=";;wouldtheyfuck <person 1> <person 2>")
         emb.add_field(name=";;cnitropls\n;;bnitropls", value="generates random classic nitro url (probably won't work)\n and the other one generates a boost nitro url (probably won't work)")
 

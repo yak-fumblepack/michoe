@@ -1,8 +1,13 @@
-import string
 import random
+import string
+import urllib
+from io import BytesIO
+
 import discord
 import requests
 from discord.ext import commands
+from PIL import Image
+
 
 # gayness check
 def percentIsGay(args):
@@ -83,12 +88,50 @@ class Funshit(commands.Cog):
     async def on_ready(self):
         print('Funshit cog has been loaded sucessfully')
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if self.bot.user.id != message.author.id:  
+            if 'uwu' in message.content:
+                await message.channel.send("daddy harder please :weary:")
+            if message.content.startswith("."):
+                await message.channel.send('.')
+            if message.content.startswith("kkk"):
+                await message.channel.send(file=discord.File("images/kkk.PNG"))
+
+            if message.content.startswith("bitch ass hoe") or message.content.startswith("HOE"):
+                for i in range(5):
+                    await message.channel.send('hoes mad')    
+        await self.bot.process_commands(message)
+
     @commands.command()
     async def howgay(self, ctx, args=None):
         if args!=None:
             isgay = percentIsGay(args)
             await ctx.send(isgay)
     
+    @commands.command()
+    async def kkk(self, ctx, args=None):
+        if args is None:
+            target = ctx.author
+            kkkimg = Image.open("images/kkk.PNG")
+            asset = target.avatar_url(size=128)
+            data = BytesIO(await asset.read())
+            pfp = Image.open(data)
+            pfp = pfp.resize((72, 60))
+            kkkimg.paste(pfp, (310, 152))
+            kkkimg.save("images/kkkprofile.jpg")
+            await ctx.send(file=discord.File("images/kkkprofile.jpg"))
+        elif args!=None:
+            target = self.bot.get_member(int(args))
+            kkkimg = Image.open("images/kkk.PNG")
+            asset = target.avatar_url(size=128)
+            data = BytesIO(await asset.read())
+            pfp = Image.open(data)
+            pfp = pfp.resize((72, 60))
+            kkkimg.paste(pfp, (310, 152))
+            kkkimg.save("images/kkkprofile.jpg")
+            await ctx.send(file=discord.File("images/kkkprofile.jpg"))
+
     @commands.command()
     async def wouldtheyfuck(self, ctx, p1, p2):
         gayperson1 = otherpercentIsGay(str(p1))
