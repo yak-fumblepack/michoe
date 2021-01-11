@@ -110,27 +110,18 @@ class Funshit(commands.Cog):
             await ctx.send(isgay)
     
     @commands.command()
-    async def kkk(self, ctx, args=None):
-        if args is None:
-            target = ctx.author
-            kkkimg = Image.open("images/kkk.PNG")
-            asset = target.avatar_url(size=128)
-            data = BytesIO(await asset.read())
-            pfp = Image.open(data)
-            pfp = pfp.resize((72, 60))
-            kkkimg.paste(pfp, (310, 152))
-            kkkimg.save("images/kkkprofile.jpg")
-            await ctx.send(file=discord.File("images/kkkprofile.jpg"))
-        elif args!=None:
-            target = self.bot.get_member(int(args))
-            kkkimg = Image.open("images/kkk.PNG")
-            asset = target.avatar_url(size=128)
-            data = BytesIO(await asset.read())
-            pfp = Image.open(data)
-            pfp = pfp.resize((72, 60))
-            kkkimg.paste(pfp, (310, 152))
-            kkkimg.save("images/kkkprofile.jpg")
-            await ctx.send(file=discord.File("images/kkkprofile.jpg"))
+    async def kkk(self, ctx, user: discord.Member = None):
+        if user == None:
+            user = ctx.author
+        
+        kkkimg = Image.open("images/kkk.PNG")
+        asset = user.avatar_url(size=128)
+        data = BytesIO(await asset.read())
+        pfp = Image.open(data)
+        pfp = pfp.resize((72, 60))
+        kkkimg.paste(pfp, (310, 152))
+        kkkimg.save("images/kkkprofile.jpg")
+        await ctx.send(file=discord.File("images/kkkprofile.jpg"))
 
     @commands.command()
     async def wouldtheyfuck(self, ctx, p1, p2):
