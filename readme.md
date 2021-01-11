@@ -7,6 +7,6 @@ pull request if you want to add something
 
 modular? yes\
 run code? yes\
+play music? yes\
 do calculus? no\
-render latex? no\
-play music? no
+render latex? no
