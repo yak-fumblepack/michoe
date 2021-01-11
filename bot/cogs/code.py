@@ -17,7 +17,8 @@ class Code(commands.Cog):
     async def on_ready(self):
         print('Code runner cog has been loaded sucessfully')
 
-    @commands.Cog.command(aliases=["run"])
+    
+    @commands.command(aliases=["run"])
     async def runcode(self, ctx, lang=None, *, args=None):
         author = ctx.message.author
 
@@ -295,8 +296,6 @@ class Code(commands.Cog):
             except:
                 await ctx.send("Sorry there was an error processing this command")
 
-        else:
-            await ctx.send("Please provide the correct input: ;;run <lang#> <> ;;codeinfo to see more")
 
 def setup(bot):
     bot.add_cog(Code(bot))

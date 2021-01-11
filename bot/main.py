@@ -1,31 +1,22 @@
-import asyncio
-import io
 import os
-import random
-import urllib.parse
-import urllib.request
-
 import discord
-import requests
 from discord.ext import commands
 from dotenv import load_dotenv
-from PIL import Image
 
 # basic settings
 load_dotenv()
 token = os.getenv("token")
 
-bot = commands.Bot(command_prefix=';;')
-bot.remove_command('help')
+bot = commands.Bot(command_prefix=';;', help_command=None)
 
 cogs = [
     'cogs.info',
     'cogs.code',
     'cogs.math',
     'cogs.funshit',
-    'cogs.utils.utils',
     'cogs.utils.admin',
-    'cogs.music.music',
+    'cogs.utils.utils',
+    'cogs.music.music'
     ]
 
 for cog in cogs:
@@ -33,6 +24,9 @@ for cog in cogs:
         bot.load_extension(cog)
     except Exception as e:
         print(f'Could not load cog {cog}: {str(e)}')
+
+
+
 
 # main 
 
@@ -69,9 +63,29 @@ async def unloadcog(ctx, cogname=None):
         print(f'Unloaded cog: {cogname} sucessfully')
         await ctx.send(f'Unloaded cog: {cogname} sucessfully')
 
+
 @bot.command()
 @commands.is_owner()
 async def kill(ctx):
     await bot.logout()
+
+
+@bot.command()
+async def ginfo(ctx):
+    for guild in bot.guilds:
+        emb = discord.Embed(title=str(guild), color=0x9966cc)
+        emb.set_thumbnail(url=guild.icon_url)
+        emb.add_field(name="Owner:", value=guild.owner, inline=False)
+        emb.add_field(
+            name="Member count:", value=guild.member_count, inline=False)
+        await ctx.send(embed=emb)
+
+@bot.command()
+async def probeserver(ctx, serverid=None):
+    if serverid!=None:
+        guild = await bot.fetch_guild(int(serverid))
+        emb = discord.Embed(title=str(guild), color=0x9966cc)
+    
+        await ctx.send(embed=emb)
 
 bot.run(token)

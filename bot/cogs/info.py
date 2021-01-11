@@ -20,8 +20,7 @@ class Info(commands.Cog):
         guildicon = server.icon_url
 
 
-        emb = discord.Embed(title=str(server), color=0x6b0080)
-        emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        emb = discord.Embed(title=str(server), color=0x9966cc)
         emb.set_thumbnail(url=guildicon)
         emb.add_field(name="Server: ", value=server.name)
         emb.add_field(name="Owner: ", value=server.owner, inline=False)
@@ -52,7 +51,7 @@ class Info(commands.Cog):
             await ctx.send("Sorry there was an error processing this command")
     
     # music commands
-    @commands.command(aliases=["mhelp"])
+    @commands.command()
     async def musichelp(self, ctx):
         author = ctx.message.author
 
@@ -98,12 +97,12 @@ class Info(commands.Cog):
         emb.add_field(name="cogs.Code help", value=";;codeinfo or ;;cinfo", inline=False)
         emb.add_field(name="cogs.Admin help", value=";;adminhelp or ;;adhelp", inline=False)
         emb.add_field(name="cogs.utils.Utils help", value=";;utilityhelp or ;;utilhelp", inline=False)
+        emb.add_field(name="cogs.music.Music help", value=";;musichelp", inline=False)
 
         try:
             await ctx.send(author, embed=emb)
         except:
             await ctx.send("Sorry there was an error processing this command")
-
 
     # code running help command
     @commands.command(aliases=["helpcode", "cinfo"])
@@ -111,7 +110,7 @@ class Info(commands.Cog):
         author = ctx.message.author
 
         emb = discord.Embed(title="Code running info", color=0x6b0080)
-        emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        emb.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         emb.add_field(name="Supported languages", value="ada\nassembly\nbash\nc#\nc\nc++\nclojure\nd\nlisp\nelixir\nerlang\nf#\nfortran\ngo\nhaskell\njava\njavascript\nkotlin\nlua\nocaml\noctave\nperl\nprolog\npython\npython3\nr\nrust\nruby\nscala\nscheme\nswift\ntcl\nvb (visual basic)\n")
 
         try:
@@ -125,9 +124,9 @@ class Info(commands.Cog):
         author = ctx.message.author
 
         emb = discord.Embed(title="Fun shit help", color=0x6b0080)
-        emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        emb.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         emb.add_field(name=";;howgay", value=";;howgay <username or name>")
-        emb.add_field(name=";;kkk", value=";;kkk <person> makes them racist, also don't be a racist")
+        emb.add_field(name=";;hoe", value=";;hoe <username or name>")
         emb.add_field(name=";;wouldtheyfuck", value=";;wouldtheyfuck <person 1> <person 2>")
         emb.add_field(name=";;cnitropls\n;;bnitropls", value="generates random classic nitro url (probably won't work)\n and the other one generates a boost nitro url (probably won't work)")
 
@@ -136,19 +135,28 @@ class Info(commands.Cog):
         except:
             await ctx.send("Sorry there was an error processing this command")
 
+
     # math help command
     @commands.command(aliases=["mhelp"])
     async def mathhelp(self, ctx):
         author = ctx.message.author
 
         emb = discord.Embed(title="Math help", color=0x6b0080)
-        emb.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        emb.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         emb.add_field(name=";;+", value=";;add <number 1> <number 2>")
 
         try:
             await ctx.send(author, embed=emb)
         except:
             await ctx.send("Sorry there was an error processing this command")
+
+
+
+
+
+
+
+    
 
 def setup(bot):
     bot.add_cog(Info(bot))
