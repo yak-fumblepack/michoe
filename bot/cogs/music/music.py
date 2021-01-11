@@ -16,7 +16,7 @@ class Music(commands.Cog):
     @commands.command(aliases=["jvc", "vc", "join"])
     async def joinvc(self, ctx):
         channel = ctx.message.author.voice.channel
-        voice = get(bot.voice_clients, guild=ctx.guild)
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
 
         if voice and voice.is_connected():
             await voice.move_to(channel)
@@ -39,14 +39,15 @@ class Music(commands.Cog):
         try:
             if song_there:
                 os.remove("song.mp3")
-                print("Removed old song file")
+                print("removed old song file")
         except PermissionError:
-            print("Trying to delete song file, but it's being played")
-            await ctx.send("ERROR: Music playing")
+            print("trying to delete song file, but it's being played")
+            await ctx.send("can't delete, music file is playing")
             return
 
-        await ctx.send("Getting everything ready now")
-        voice = get(bot.voice_clients, guild=ctx.guild)
+        await ctx.send("downloading song")
+
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
 
         ydl_opts = {
             'format': 'bestaudio/best',
@@ -71,8 +72,8 @@ class Music(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 0.07
 
-        nname = name.rsplit("-", 2)
-        await ctx.send(f"done! playing: {nname[0]}")
+        new_name = name.rsplit("-", 2)
+        await ctx.send(f"done! playing: {new_name[0]}")
         print("playing\n")
         
 def setup(bot):

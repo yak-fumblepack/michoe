@@ -14,8 +14,10 @@ class Admin(commands.Cog):
     async def say(self, ctx, dm_type=None, dm_id=None, *, args=None):
         if dm_type == 'channel' and dm_id!=None:
             try: 
-                target = await bot.fetch_channel(dm_id)
+                target = await self.bot.fetch_channel(dm_id)
                 await target.send(args)
+                await ctx.message.delete()
+                await ctx.send("sent")
             except:
                 await ctx.send("Error could not dm the channel")
         else:
@@ -26,8 +28,10 @@ class Admin(commands.Cog):
     async def dm(self, ctx, dm_type=None, dm_id=None, *, args=None):
         if dm_type == 'user' and dm_id!=None:
             try: 
-                target = await bot.fetch_user(dm_id)
+                target = await self.bot.fetch_user(dm_id)
                 await target.send(args)
+                await ctx.message.delete()
+                await ctx.send("sent")
             except:
                 await ctx.send("Error could not dm the user")
         else:
