@@ -1,6 +1,6 @@
 ## Michoe
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yak-fumblepack/michoe/master)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/actions/toolkit/toolkit-unit-tests)
 
 discord bot for server \
 pull request if you want to add something 
