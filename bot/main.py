@@ -13,7 +13,6 @@ cogs = [
     'cogs.info',
     'cogs.code',
     'cogs.math',
-    'cogs.funshit',
     'cogs.utils.admin',
     'cogs.utils.utils',
     'cogs.music.music'

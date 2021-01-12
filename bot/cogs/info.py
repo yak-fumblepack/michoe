@@ -118,23 +118,6 @@ class Info(commands.Cog):
         except:
             await ctx.send("Sorry there was an error processing this command")
 
-    # funshit help command
-    @commands.command(aliases=["fshithelp", "shithelp"])
-    async def funshithelp(self, ctx):
-        author = ctx.message.author
-
-        emb = discord.Embed(title="Fun shit help", color=0x6b0080)
-        emb.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        emb.add_field(name=";;howgay", value=";;howgay <username or name>")
-        emb.add_field(name=";;hoe", value=";;hoe <username or name>")
-        emb.add_field(name=";;wouldtheyfuck", value=";;wouldtheyfuck <person 1> <person 2>")
-        emb.add_field(name=";;cnitropls\n;;bnitropls", value="generates random classic nitro url (probably won't work)\n and the other one generates a boost nitro url (probably won't work)")
-
-        try:
-            await ctx.send(author, embed=emb)
-        except:
-            await ctx.send("Sorry there was an error processing this command")
-
 
     # math help command
     @commands.command(aliases=["mhelp"])
